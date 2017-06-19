@@ -123,24 +123,38 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYN-hH-iHw">
-                                <rect key="frame" x="37" y="72" width="36.5" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="bYN-hH-iHw">
+                                <rect key="frame" x="37" y="72" width="300" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I2V-z9-4yg">
-                                <rect key="frame" x="143" y="469" width="89" height="30"/>
+                                <rect key="frame" x="143" y="488" width="89" height="30"/>
                                 <state key="normal" title="See on Flickr"/>
                                 <connections>
                                     <action selector="seeOnFlickrTapped:" destination="Paq-pq-cf5" eventType="touchUpInside" id="w3P-70-ngW"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taken by:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3E4-2b-VTs">
+                                <rect key="frame" x="37" y="457" width="77" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owner name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75g-HD-eCa">
+                                <rect key="frame" x="119" y="457" width="98" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="bYN-hH-iHw" firstAttribute="width" secondItem="KJf-jG-cCG" secondAttribute="width" id="1fA-ul-mG0"/>
+                            <constraint firstItem="3E4-2b-VTs" firstAttribute="top" secondItem="Q1v-C0-qAq" secondAttribute="bottom" constant="17" id="CId-X9-hVH"/>
+                            <constraint firstItem="75g-HD-eCa" firstAttribute="leading" secondItem="3E4-2b-VTs" secondAttribute="trailing" constant="5" id="Clb-q7-gdM"/>
                             <constraint firstItem="Q1v-C0-qAq" firstAttribute="leading" secondItem="KJf-jG-cCG" secondAttribute="leading" id="LG9-cL-i51"/>
-                            <constraint firstItem="I2V-z9-4yg" firstAttribute="top" secondItem="7KW-d4-dqn" secondAttribute="bottom" constant="29" id="RJV-Jn-hlY"/>
                             <constraint firstItem="7KW-d4-dqn" firstAttribute="leading" secondItem="Q1v-C0-qAq" secondAttribute="trailing" constant="5" id="VHW-QA-9Nf"/>
                             <constraint firstItem="bYN-hH-iHw" firstAttribute="leading" secondItem="xmQ-3c-cqE" secondAttribute="leadingMargin" constant="21" id="WyO-xK-hiK"/>
                             <constraint firstItem="Q1v-C0-qAq" firstAttribute="top" secondItem="KJf-jG-cCG" secondAttribute="bottom" constant="26" id="Ya2-CG-dog"/>
@@ -149,12 +163,16 @@
                             <constraint firstItem="KJf-jG-cCG" firstAttribute="height" secondItem="xmQ-3c-cqE" secondAttribute="width" multiplier="0.8" id="k37-MP-Kcq"/>
                             <constraint firstItem="I2V-z9-4yg" firstAttribute="centerX" secondItem="KJf-jG-cCG" secondAttribute="centerX" id="q4y-ME-4nj"/>
                             <constraint firstItem="bYN-hH-iHw" firstAttribute="top" secondItem="SbS-je-w5h" secondAttribute="bottom" constant="8" id="tgt-BH-FWX"/>
+                            <constraint firstItem="I2V-z9-4yg" firstAttribute="top" secondItem="75g-HD-eCa" secondAttribute="bottom" constant="10" id="vBX-2g-nvz"/>
+                            <constraint firstItem="75g-HD-eCa" firstAttribute="centerY" secondItem="3E4-2b-VTs" secondAttribute="centerY" id="vQr-61-b8r"/>
                             <constraint firstItem="KJf-jG-cCG" firstAttribute="centerX" secondItem="xmQ-3c-cqE" secondAttribute="centerX" id="wgX-23-1A0"/>
                             <constraint firstItem="KJf-jG-cCG" firstAttribute="top" secondItem="bYN-hH-iHw" secondAttribute="bottom" id="wx8-A5-LSk"/>
+                            <constraint firstItem="3E4-2b-VTs" firstAttribute="leading" secondItem="Q1v-C0-qAq" secondAttribute="leading" id="yo7-eP-X1U"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="KJf-jG-cCG" id="MIl-8F-5AP"/>
+                        <outlet property="ownerLabel" destination="75g-HD-eCa" id="WWR-8b-aeM"/>
                         <outlet property="testLabel" destination="7KW-d4-dqn" id="0Fm-hz-hMO"/>
                         <outlet property="titleLabel" destination="bYN-hH-iHw" id="qO2-eg-vrE"/>
                     </connections>

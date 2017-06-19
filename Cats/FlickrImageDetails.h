@@ -13,7 +13,8 @@
 
 @property (strong, nonatomic) NSString *url;
 @property (strong, nonatomic) NSString *views;
+@property (strong, nonatomic) NSString *owner;
 
-- (instancetype)initWithURL:(NSString *)url andViews:(NSString *)views;
+- (instancetype)initWithURL:(NSString *)url andViews:(NSString *)views andOwner:(NSString *)owner;
 
 @end

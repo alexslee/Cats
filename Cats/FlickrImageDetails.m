@@ -10,12 +10,13 @@
 
 @implementation FlickrImageDetails
 
-- (instancetype)initWithURL:(NSString *)url andViews:(NSString *)views {
+- (instancetype)initWithURL:(NSString *)url andViews:(NSString *)views andOwner:(NSString *)owner {
     self = [super init];
     
     if (self) {
         _url = url;
         _views = views;
+        _owner = owner;
     }
     
     return self;

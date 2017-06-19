@@ -16,6 +16,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *testLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *ownerLabel;
+
 @property (strong, nonatomic) FlickrImage *image;
 
 @end
@@ -50,6 +52,7 @@
     self.imageView.layer.masksToBounds = YES;
     self.testLabel.text = self.image.imageDetails.views;
     self.titleLabel.text = self.image.imageName;
+    self.ownerLabel.text = self.image.imageDetails.owner;
 }
 
 - (void)setupForImage:(FlickrImage *)image {

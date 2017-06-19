@@ -36,8 +36,12 @@
         NSDictionary *urls = [photo objectForKey:@"urls"];
         NSArray<NSDictionary *> *oneURL = [urls objectForKey:@"url"];
         
+        NSDictionary *owner = [photo objectForKey:@"owner"];
+        
+        NSString *username = [owner objectForKey:@"username"];
+        
         NSString *views = [photo objectForKey:@"views"];
-        FlickrImageDetails *imageInfo = [[FlickrImageDetails alloc] initWithURL:[oneURL[0] objectForKey:@"_content"] andViews:views];
+        FlickrImageDetails *imageInfo = [[FlickrImageDetails alloc] initWithURL:[oneURL[0] objectForKey:@"_content"] andViews:views andOwner:username];
         
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             completion(imageInfo);
