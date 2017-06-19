@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FlickrManager.h"
 #import "CustomCollectionViewCell.h"
-
+#import "ImageDetailViewController.h"
 @interface ViewController : UIViewController
 
 

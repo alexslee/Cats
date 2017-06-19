@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "FlickrImageDetails.h"
 @interface FlickrImage : NSObject
 //need the server, farm, id, and secret attributes of each photo to be able to construct the URL for download
+
+@property (strong, nonatomic)FlickrImageDetails *imageDetails;
 
 @property (strong, nonatomic) NSString *farm;
 

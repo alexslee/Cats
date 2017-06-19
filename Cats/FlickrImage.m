@@ -15,6 +15,7 @@
     self = [super init];
     
     if (self) {
+        _imageDetails = nil;
         _farm = farm;
         _imageID = imageID;
         _secret = secret;

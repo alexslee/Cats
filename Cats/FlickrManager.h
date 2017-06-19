@@ -9,7 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "FlickrImage.h"
+#import "FlickrImageDetails.h"
 @interface FlickrManager : NSObject
+
+- (void)downloadDetailsForImage:(FlickrImage *)image withCompletion:(void (^)(FlickrImageDetails*))completion;
 
 - (void)downloadImageWithCompletionHandler:(void (^)(UIImage *))completion fromURL:(NSString *)url;
 

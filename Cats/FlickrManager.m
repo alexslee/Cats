@@ -10,6 +10,44 @@
 
 @implementation FlickrManager
 
+- (void)downloadDetailsForImage:(FlickrImage *)image withCompletion:(void (^)(FlickrImageDetails*))completion {
+    NSString *rawURL = [NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&format=json&photo_id=%@&nojsoncallback=1&api_key=8ec3cec8e3a44f229e001aa4105329fb&tags=cat",image.imageID];
+    
+    NSURL *url = [NSURL URLWithString:rawURL];
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"error: %@", error.localizedDescription);
+            return;
+        }
+        NSError *jsonError = nil;
+        NSDictionary *info = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+        
+        if (jsonError) {
+            NSLog(@"error: %@", jsonError.localizedDescription);
+            return;
+        }
+        NSDictionary *photo = [info objectForKey:@"photo"];
+        NSDictionary *urls = [photo objectForKey:@"urls"];
+        NSArray<NSDictionary *> *oneURL = [urls objectForKey:@"url"];
+        
+        NSString *views = [photo objectForKey:@"views"];
+        FlickrImageDetails *imageInfo = [[FlickrImageDetails alloc] initWithURL:[oneURL[0] objectForKey:@"_content"] andViews:views];
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            completion(imageInfo);
+        }];
+        
+    }];
+    
+    [task resume];
+}
+
 - (void)downloadImageWithCompletionHandler:(void (^)(UIImage *))completion fromURL:(NSString *)url;
 {
     NSURL *fromHere = [NSURL URLWithString:url];

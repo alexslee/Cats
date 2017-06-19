@@ -12,6 +12,8 @@
 
 @property (strong, nonatomic) NSMutableArray<FlickrImage *> *photos;
 
+@property (nonatomic)CGPoint point;
+
 @property (strong, nonatomic) FlickrManager *flickrManager;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -73,6 +75,32 @@
     }
     return cell;
 }
+- (IBAction)tapToDetailedView:(UITapGestureRecognizer *)sender {
+    self.point = [sender locationInView:self.collectionView];
+    [self performSegueWithIdentifier:@"showImageDetail" sender:self];
+    
+}
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"showImageDetail"]) {
+        NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:self.point];
+        ImageDetailViewController *controller = (ImageDetailViewController *)[segue destinationViewController];
+        
+        FlickrImage *image = [self.photos objectAtIndex:indexPath.row];
+        
+        if (image.imageDetails == nil) {
+            [self.flickrManager downloadDetailsForImage:image withCompletion:^(FlickrImageDetails *details) {
+                image.imageDetails = details;
+                [controller setupForImage:image];
+            }];
+        } else {
+            [controller setupForImage:image];
+        }
+    }
+}
+
+//- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//}
 
 @end
