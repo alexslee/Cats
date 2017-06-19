@@ -14,6 +14,8 @@
 //a 'download manager', the middleman between the app and Flickr
 @interface FlickrManager : NSObject
 
+@property (strong, nonatomic)NSURLSessionDownloadTask *downloadTask;
+
 - (void)downloadDetailsForImage:(FlickrImage *)image withCompletion:(void (^)(FlickrImageDetails*))completion;
 
 - (void)downloadImageWithCompletionHandler:(void (^)(UIImage *))completion fromURL:(NSString *)url;

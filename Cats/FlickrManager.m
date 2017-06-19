@@ -59,7 +59,7 @@
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     
-    NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL:fromHere completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    self.downloadTask = [session downloadTaskWithURL:fromHere completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
         if (error) {
             NSLog(@"error: %@", error.localizedDescription);
@@ -76,7 +76,7 @@
         
     }];
     
-    [downloadTask resume];
+    [self.downloadTask resume];
 }
 
 - (void)collectImagesWithCompletionHandler:(void (^)(NSMutableArray *))completion {
