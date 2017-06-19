@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+//object will retain details to be displayed in the detailed view for each image
 @interface FlickrImageDetails : NSObject
 
 @property (strong, nonatomic) NSString *url;

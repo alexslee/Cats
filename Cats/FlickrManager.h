@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 #import "FlickrImage.h"
 #import "FlickrImageDetails.h"
+
+//a 'download manager', the middleman between the app and Flickr
 @interface FlickrManager : NSObject
 
 - (void)downloadDetailsForImage:(FlickrImage *)image withCompletion:(void (^)(FlickrImageDetails*))completion;

@@ -12,6 +12,7 @@
 #import "FlickrImageDetails.h"
 @interface ImageDetailViewController : UIViewController
 
+//configure the various properties of the view
 - (void)setupForImage:(FlickrImage *)image;
 
 @end
