@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <UIKit/UIKit.h>
 @interface FlickrImage : NSObject
 //need the server, farm, id, and secret attributes of each photo to be able to construct the URL for download
 
@@ -22,6 +22,8 @@
 @property (strong, nonatomic) NSString *constructedURL;
 
 @property (strong, nonatomic) NSString *imageName;
+
+@property (strong, nonatomic) UIImage *image;
 
 - (instancetype)initWithFarm:(NSString *)farm andID:(NSString *)imageID andSecret:(NSString *)secret andServer:(NSString *)server andName:(NSString *)name;
 

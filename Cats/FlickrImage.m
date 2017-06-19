@@ -23,6 +23,7 @@
         _constructedURL = [NSString stringWithFormat:@"https://farm%@.staticflickr.com/%@/%@_%@.jpg",_farm,_server,_imageID,_secret];
         
         _imageName = name;
+        _image = nil;
     }
     
     return self;

@@ -59,14 +59,18 @@
     CustomCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
     FlickrImage *photoData = [self.photos objectAtIndex:indexPath.row];
-    
-    [self.flickrManager downloadImageWithCompletionHandler:^(UIImage *image) {
-        
-        cell.imageView.image = image;
+    if (photoData.image == nil) {
+        [self.flickrManager downloadImageWithCompletionHandler:^(UIImage *image) {
+            photoData.image = image;
+            cell.imageView.image = image;
+            cell.imageName.text = photoData.imageName;
+            
+        } fromURL:photoData.constructedURL];
+    }
+    else {
+        cell.imageView.image = photoData.image;
         cell.imageName.text = photoData.imageName;
-        
-    } fromURL:photoData.constructedURL];
-    
+    }
     return cell;
 }
 
