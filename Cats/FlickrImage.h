@@ -21,6 +21,8 @@
 
 @property (strong, nonatomic) NSString *constructedURL;
 
-- (instancetype)initWithFarm:(NSString *)farm andID:(NSString *)imageID andSecret:(NSString *)secret andServer:(NSString *)server;
+@property (strong, nonatomic) NSString *imageName;
+
+- (instancetype)initWithFarm:(NSString *)farm andID:(NSString *)imageID andSecret:(NSString *)secret andServer:(NSString *)server andName:(NSString *)name;
 
 @end

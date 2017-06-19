@@ -10,7 +10,7 @@
 
 @implementation FlickrImage
 
-- (instancetype)initWithFarm:(NSString *)farm andID:(NSString *)imageID andSecret:(NSString *)secret andServer:(NSString *)server {
+- (instancetype)initWithFarm:(NSString *)farm andID:(NSString *)imageID andSecret:(NSString *)secret andServer:(NSString *)server andName:(NSString *)name {
     
     self = [super init];
     
@@ -21,6 +21,8 @@
         _server = server;
         
         _constructedURL = [NSString stringWithFormat:@"https://farm%@.staticflickr.com/%@/%@_%@.jpg",_farm,_server,_imageID,_secret];
+        
+        _imageName = name;
     }
     
     return self;

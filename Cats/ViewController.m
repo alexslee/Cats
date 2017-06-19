@@ -63,6 +63,7 @@
     [self.flickrManager downloadImageWithCompletionHandler:^(UIImage *image) {
         
         cell.imageView.image = image;
+        cell.imageName.text = photoData.imageName;
         
     } fromURL:photoData.constructedURL];
     

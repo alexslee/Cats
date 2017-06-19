@@ -64,7 +64,7 @@
         NSDictionary *actualPhotos = [photos objectForKey:@"photo"];
         NSMutableArray *constructedImages = [[NSMutableArray alloc] init];
         for (NSDictionary *photo in actualPhotos) {
-            FlickrImage *tempImage = [[FlickrImage alloc] initWithFarm:[photo objectForKey:@"farm"] andID:[photo objectForKey:@"id"] andSecret:[photo objectForKey:@"secret"] andServer:[photo objectForKey:@"server"]];
+            FlickrImage *tempImage = [[FlickrImage alloc] initWithFarm:[photo objectForKey:@"farm"] andID:[photo objectForKey:@"id"] andSecret:[photo objectForKey:@"secret"] andServer:[photo objectForKey:@"server"] andName:[photo objectForKey:@"title"]];
             [constructedImages addObject:tempImage];
 //            NSLog(@"title: %@",[photo objectForKey:@"title"]);
             
