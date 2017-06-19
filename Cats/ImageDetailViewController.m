@@ -8,7 +8,7 @@
 
 #import "ImageDetailViewController.h"
 
-@interface ImageDetailViewController ()
+@interface ImageDetailViewController () <SFSafariViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
@@ -55,6 +55,15 @@
 - (void)setupForImage:(FlickrImage *)image {
     self.image = image;
     [self configureView];
+}
+- (IBAction)seeOnFlickrTapped:(UIButton *)sender {
+    SFSafariViewController *safari = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:self.image.imageDetails.url]];
+    safari.delegate = self;
+    [self presentViewController:safari animated:YES completion:nil];
+}
+
+- (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
+    [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

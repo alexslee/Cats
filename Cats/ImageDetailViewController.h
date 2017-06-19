@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SafariServices/SafariServices.h>
 #import "FlickrImage.h"
 #import "FlickrImageDetails.h"
 @interface ImageDetailViewController : UIViewController
