@@ -17,6 +17,7 @@
 @property (strong, nonatomic) FlickrManager *flickrManager;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *layout;
 
 @end
 
@@ -25,7 +26,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+    self.layout.itemSize = CGSizeMake(self.view.frame.size.width/3.0, self.view.frame.size.width/3.0);
+    self.layout.minimumLineSpacing = 0.0;
+    self.layout.minimumInteritemSpacing = 0.0;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.flickrManager = [[FlickrManager alloc] init];
     [self.flickrManager collectImagesWithCompletionHandler:^(NSMutableArray *constructedPhotos) {
         self.photos = constructedPhotos;
@@ -59,7 +63,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CustomCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    
+
     FlickrImage *photoData = [self.photos objectAtIndex:indexPath.row];
     if (photoData.image == nil) {
         [self.flickrManager downloadImageWithCompletionHandler:^(UIImage *image) {
